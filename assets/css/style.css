@@ -1,0 +1,661 @@
+/* =========================
+   VARIABLES
+   ========================= */
+:root{
+--bg:#0f1112;
+--surface:rgba(20,21,22,0.95);
+--surface-2:#18191a;
+--text:#e6eef0;
+--muted:#a9b0b4;
+--accent:#00d0db;
+--accent-2:#00a9b1;
+--border:rgba(255,255,255,0.05);
+--radius:12px;
+--container-width:1200px;
+--whatsapp:#25D366;
+}
+
+/* =========================
+   BASE
+   ========================= */
+*{box-sizing:border-box}
+
+html{scroll-behavior:smooth}
+
+body{
+margin:0;
+min-height:100%;
+font-family:"Poppins",system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+background:var(--bg);
+color:var(--text);
+line-height:1.5;
+-webkit-font-smoothing:antialiased;
+-moz-osx-font-smoothing:grayscale;
+overflow-x:hidden;
+}
+
+img{
+max-width:100%;
+height:auto;
+display:block;
+vertical-align:middle;
+}
+
+section{
+scroll-margin-top:90px;
+}
+
+/* =========================
+   ACCESSIBILITY
+   ========================= */
+a:focus-visible,
+button:focus-visible{
+outline:2px solid var(--accent);
+outline-offset:2px;
+}
+
+/* =========================
+   UTILITIES
+   ========================= */
+.muted{color:var(--muted)}
+.small{font-size:.9rem}
+.center{text-align:center}
+
+/* =========================
+   CONTAINER
+   ========================= */
+.container{
+width:100%;
+max-width:var(--container-width);
+margin:0 auto;
+padding:0 24px;
+}
+
+/* =========================
+   HEADER
+   ========================= */
+.site-header{
+position:fixed;
+top:0;
+left:0;
+right:0;
+width:100%;
+background:var(--surface);
+border-bottom:1px solid var(--border);
+z-index:100;
+backdrop-filter:blur(10px);
+transition:box-shadow .3s;
+}
+
+.site-header.scrolled{
+box-shadow:0 10px 30px rgba(0,0,0,.4);
+}
+
+.header-inner{
+display:flex;
+align-items:center;
+justify-content:space-between;
+height:70px;
+}
+
+.logo{
+color:var(--accent);
+font-weight:700;
+font-size:1.2rem;
+letter-spacing:-.5px;
+text-decoration:none;
+}
+
+/* =========================
+   NAVIGATION
+   ========================= */
+.nav-list{
+display:flex;
+gap:24px;
+align-items:center;
+list-style:none;
+margin:0;
+padding:0;
+}
+
+.nav-list li{
+margin:0;
+padding:0;
+}
+
+.nav-center{
+display:flex;
+align-items:center;
+}
+
+.nav-link{
+color:var(--text);
+text-decoration:none;
+font-weight:500;
+transition:.2s;
+}
+
+.nav-link:hover,
+.nav-link.active{
+color:var(--accent);
+}
+
+/* =========================
+   BUTTONS
+   ========================= */
+.btn-cv,.btn-primary,.btn-outline{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+text-decoration:none;
+font-weight:700;
+cursor:pointer;
+border:none;
+white-space:nowrap;
+transition:.2s;
+}
+
+.btn-cv{
+background:var(--accent);
+color:#001014;
+padding:.5rem 1rem;
+border-radius:8px;
+font-size:.9rem;
+}
+
+.btn-primary{
+background:var(--accent);
+color:#001014;
+padding:.8rem 1.5rem;
+border-radius:10px;
+box-shadow:0 8px 24px rgba(0,208,219,.2);
+}
+
+.btn-outline{
+border:2px solid var(--accent);
+color:var(--accent);
+background:transparent;
+padding:.7rem 1.4rem;
+border-radius:10px;
+}
+
+.btn-cv:hover,
+.btn-primary:hover{
+background:var(--accent-2);
+transform:translateY(-2px);
+}
+
+.btn-outline:hover{
+background:var(--accent);
+color:#001014;
+}
+
+/* =========================
+   MOBILE MENU
+   ========================= */
+.nav-toggle{
+display:none;
+background:none;
+border:0;
+padding:8px;
+cursor:pointer;
+}
+
+.hamburger,
+.hamburger::before,
+.hamburger::after{
+display:block;
+width:24px;
+height:2px;
+background:var(--text);
+border-radius:2px;
+position:relative;
+transition:.3s;
+}
+
+.hamburger::before,
+.hamburger::after{
+content:"";
+position:absolute;
+left:0;
+}
+
+.hamburger::before{top:-8px}
+.hamburger::after{top:8px}
+
+/* =========================
+   SECTIONS
+   ========================= */
+.section{
+padding:clamp(50px,10vh,100px) 0;
+}
+
+.section-title{
+font-size:clamp(1.8rem,4vw,2.4rem);
+color:var(--accent);
+margin-bottom:32px;
+text-align:center;
+}
+
+/* =========================
+   HERO
+   ========================= */
+.hero{
+display:grid;
+grid-template-columns:1.2fr .8fr;
+gap:48px;
+align-items:center;
+min-height:90vh;
+padding:120px 0 60px;
+}
+
+.hero h1{
+font-size:clamp(2.2rem,6vw,4rem);
+line-height:1.15;
+margin:0 0 16px;
+}
+
+.hero-role{
+font-size:clamp(1.1rem,3vw,1.5rem);
+color:var(--accent);
+font-weight:600;
+margin:10px 0 20px;
+}
+
+.hero-bio{
+max-width:650px;
+color:var(--muted);
+font-size:1.05rem;
+margin-bottom:24px;
+}
+
+.hero-cta{
+display:flex;
+gap:16px;
+flex-wrap:wrap;
+}
+
+.hero-links,
+.social-links{
+margin-top:32px;
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+}
+
+.hero-right .hero-role{
+margin-top:0;
+font-size:1.15rem;
+}
+
+/* =========================
+   HERO STATS
+   ========================= */
+.hero-stats{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:14px;
+margin:18px 0 22px;
+text-align:left;
+}
+
+.hero-stats .stat{
+padding:12px;
+background:rgba(255,255,255,.02);
+border:1px solid var(--border);
+border-radius:var(--radius);
+}
+
+.hero-stats strong{
+display:block;
+font-size:1.35rem;
+color:var(--accent);
+}
+
+.hero-stats .stat:last-child{
+grid-column:span 2;
+}
+
+/* =========================
+   PROFILE IMAGE
+   ========================= */
+.perfil-img{
+width:100%;
+max-width:380px;
+aspect-ratio:1/1;
+object-fit:cover;
+border-radius:24px;
+border:4px solid rgba(255,255,255,.03);
+box-shadow:0 20px 40px rgba(0,0,0,.4);
+margin:0 auto 20px;
+}
+
+/* =========================
+   SOCIAL BUTTONS
+   ========================= */
+.social-btn{
+display:inline-flex;
+align-items:center;
+gap:8px;
+padding:.6rem 1rem;
+border-radius:99px;
+background:var(--surface-2);
+border:1px solid var(--border);
+color:var(--muted);
+text-decoration:none;
+transition:.3s;
+}
+
+.social-btn .icon{
+width:18px;
+height:18px;
+}
+
+.social-btn:hover{
+transform:translateY(-3px);
+color:var(--accent);
+border-color:var(--accent);
+}
+
+/* =========================
+   SKILLS
+   ========================= */
+.skills-grid{
+display:flex;
+flex-wrap:wrap;
+gap:12px;
+justify-content:center;
+}
+
+.skill-card{
+background:var(--surface-2);
+padding:10px 20px;
+border-radius:50px;
+border:1px solid var(--border);
+font-size:.9rem;
+font-weight:500;
+}
+
+/* =========================
+   PROJECTS
+   ========================= */
+.projects-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:24px;
+}
+
+.project-card{
+display:flex;
+flex-direction:column;
+background:var(--surface-2);
+border-radius:16px;
+padding:24px;
+border:1px solid var(--border);
+transition:transform .3s,box-shadow .3s;
+will-change:transform;
+}
+
+.project-card:hover{
+transform:translateY(-8px);
+box-shadow:0 20px 40px rgba(0,0,0,.4);
+}
+
+.btn-outline-sm{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+margin-top:16px;
+padding:.55rem .95rem;
+border-radius:8px;
+border:1px solid var(--accent);
+color:var(--accent);
+text-decoration:none;
+font-size:.88rem;
+font-weight:700;
+transition:.2s;
+}
+
+.btn-outline-sm:hover{
+background:var(--accent);
+color:#001014;
+}
+
+/* =========================
+   CONTACT
+   ========================= */
+.contato-grid{
+display:grid;
+grid-template-columns:1fr 350px;
+gap:60px;
+align-items:center;
+}
+
+/* =========================
+   FOOTER
+   ========================= */
+.site-footer{
+padding:26px 0;
+border-top:1px solid var(--border);
+color:var(--muted);
+background:rgba(255,255,255,.01);
+}
+
+.footer-inner{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:14px;
+}
+
+.footer-copy{
+margin:0;
+font-size:.88rem;
+}
+
+.footer-links{
+display:flex;
+gap:14px;
+flex-wrap:wrap;
+}
+
+.footer-links a{
+color:var(--muted);
+text-decoration:none;
+font-size:.88rem;
+padding:6px 8px;
+border-radius:10px;
+transition:.2s;
+}
+
+.footer-links a:hover{
+color:var(--accent);
+background:rgba(255,255,255,.03);
+}
+
+/* =========================
+   WHATSAPP BUTTON
+   ========================= */
+.whatsapp-float{
+position:fixed;
+bottom:20px;
+right:20px;
+background:var(--whatsapp);
+color:#fff;
+padding:12px 18px;
+border-radius:30px;
+font-weight:600;
+text-decoration:none;
+box-shadow:0 6px 20px rgba(0,0,0,.25);
+z-index:999;
+transition:.3s;
+}
+
+.whatsapp-float:hover{
+transform:scale(1.05);
+}
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+
+@media(max-width:1000px){
+
+.hero{
+grid-template-columns:1fr;
+text-align:center;
+gap:18px;
+min-height:auto;
+}
+
+.hero-left{order:1}
+.hero-right{order:2}
+
+.hero-right{
+max-width:640px;
+margin:0 auto;
+padding:14px;
+background:rgba(255,255,255,.02);
+border:1px solid var(--border);
+border-radius:14px;
+}
+
+.contato-grid{
+grid-template-columns:1fr;
+text-align:center;
+gap:34px;
+}
+
+.social-links{
+justify-content:center;
+}
+
+}
+
+@media(max-width:780px){
+
+.nav-toggle{
+display:block;
+}
+
+.header-actions .btn-cv{
+display:none;
+}
+
+.nav-center{
+position:absolute;
+top:70px;
+left:0;
+right:0;
+background:var(--surface-2);
+flex-direction:column;
+padding:18px;
+border-bottom:1px solid var(--border);
+
+opacity:0;
+transform:translateY(-10px);
+pointer-events:none;
+transition:.25s ease;
+}
+
+.nav-center.active{
+opacity:1;
+transform:translateY(0);
+pointer-events:auto;
+}
+
+.nav-center .nav-link{
+padding:10px 0;
+font-size:1rem;
+}
+
+}
+
+@media(max-width:600px){
+
+.container{
+padding:0 18px;
+}
+
+.hero{
+padding:96px 0 40px;
+}
+
+.hero-cta{
+width:100%;
+flex-direction:column;
+gap:10px;
+}
+
+.btn-primary,
+.btn-outline{
+width:100%;
+max-width:360px;
+margin:0 auto;
+}
+
+.section{
+padding:44px 0;
+}
+
+.projects-grid{
+gap:14px;
+}
+
+.project-card{
+padding:18px;
+}
+
+.skill-card{
+padding:9px 14px;
+font-size:.85rem;
+}
+
+.whatsapp-float{
+bottom:16px;
+right:16px;
+padding:10px 14px;
+font-size:.9rem;
+}
+
+}
+
+@media(max-width:380px){
+
+.hero{
+gap:14px;
+padding:88px 0 34px;
+}
+
+.hero-stats{
+grid-template-columns:1fr;
+}
+
+.hero-stats .stat:last-child{
+grid-column:auto;
+}
+
+.perfil-img{
+width:min(72vw,240px);
+margin:0 auto 10px; 
+}
+
+}
+
+::selection{
+background:var(--accent);
+color:#001014;
+}
+
+::-webkit-scrollbar{
+width:10px;
+}
+
+::-webkit-scrollbar-track{
+background:var(--bg);
+}
+
+::-webkit-scrollbar-thumb{
+background:var(--accent);
+border-radius:999px;
+}
