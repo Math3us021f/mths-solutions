@@ -286,46 +286,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
   }
 
-  // =========================
-  // COPIAR E-MAIL
-  // =========================
-  document
-    .querySelectorAll('a[href^="mailto:"]')
-    .forEach(link => {
-
-      link.addEventListener(
-        "click",
-        async () => {
-
-          const href =
-            link.getAttribute("href");
-
-          if (!href) return;
-
-          const email =
-            href.replace(/^mailto:/i, "");
-
-          if (!navigator.clipboard) return;
-
-          try {
-
-            await navigator.clipboard.writeText(email);
-
-            showToast(
-              "E-mail copiado para a área de transferência"
-            );
-
-          } catch {
-
-            showToast(
-              "Não foi possível copiar o e-mail"
-            );
-
-          }
-
-        }
-      );
-
-    });
-
 });
