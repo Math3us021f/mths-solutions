@@ -1,4 +1,4 @@
-// === MAIN.JS ===
+// === MAIN.JS - VERSÃO CORRIGIDA E ROBUSTA ===
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -20,6 +20,91 @@ document.addEventListener("DOMContentLoaded", () => {
     'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
   let menuOpen = false;
+
+  // =========================
+  // DOWNLOAD ROBUSTO DE ARQUIVOS
+  // =========================
+  function setupDownloadHandlers() {
+    document.querySelectorAll('a[data-download="true"]').forEach(link => {
+      link.addEventListener('click', handleDownload);
+    });
+  }
+
+  async function handleDownload(e) {
+    const link = e.currentTarget;
+    const href = link.getAttribute('href');
+    const filename = link.getAttribute('download') || 'Matheus_Antonio.pdf';
+
+    // Verificar se é PDF
+    if (!href.endsWith('.pdf')) {
+      return; // Deixar comportamento padrão
+    }
+
+    e.preventDefault();
+
+    try {
+      // Mostrar feedback ao usuário
+      const originalText = link.textContent;
+      link.textContent = '⏳ Baixando...';
+      link.disabled = true;
+
+      // Fazer fetch do arquivo
+      const response = await fetch(href);
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      // Converter para Blob
+      const blob = await response.blob();
+
+      // Verificar se é realmente um PDF
+      if (blob.type !== 'application/pdf') {
+        console.warn('Aviso: Arquivo pode não ser um PDF válido');
+      }
+
+      // Criar URL do Blob
+      const blobUrl = URL.createObjectURL(blob);
+
+      // Criar elemento <a> temporário para download
+      const downloadLink = document.createElement('a');
+      downloadLink.href = blobUrl;
+      downloadLink.download = filename;
+      downloadLink.style.display = 'none';
+
+      // Adicionar ao DOM, clicar e remover
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+
+      // Limpeza
+      setTimeout(() => {
+        URL.revokeObjectURL(blobUrl);
+        downloadLink.remove();
+
+        // Restaurar estado do botão
+        link.textContent = originalText;
+        link.disabled = false;
+
+        showToast('✅ Currículo baixado com sucesso!');
+      }, 100);
+
+    } catch (error) {
+      console.error('Erro ao baixar arquivo:', error);
+
+      // Restaurar estado do botão em caso de erro
+      link.textContent = originalText;
+      link.disabled = false;
+
+      // Mostrar mensagem de erro
+      if (error.message.includes('Failed to fetch')) {
+        showToast('⚠️ Erro de conexão. Tente novamente.');
+      } else if (error.message.includes('HTTP error')) {
+        showToast('⚠️ Arquivo não encontrado (404).');
+      } else {
+        showToast('⚠️ Erro ao baixar o arquivo. Tente novamente.');
+      }
+    }
+  }
 
   // =========================
   // ABRIR MENU
@@ -285,5 +370,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 2200);
 
   }
+
+  // =========================
+  // INICIALIZAR HANDLERS DE DOWNLOAD
+  // =========================
+  setupDownloadHandlers();
 
 });
