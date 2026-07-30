@@ -21,6 +21,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let menuOpen = false;
 
+  const prefersReducedMotion =
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
   // =========================
   // DOWNLOAD ROBUSTO DE ARQUIVOS
   // =========================
@@ -36,17 +39,25 @@ document.addEventListener("DOMContentLoaded", () => {
     const filename = link.getAttribute('download') || 'Matheus_Antonio.pdf';
 
     // Verificar se é PDF
-    if (!href.endsWith('.pdf')) {
+    if (!href || !href.endsWith('.pdf')) {
       return; // Deixar comportamento padrão
+    }
+
+    // Em file:// o fetch é bloqueado pela origem opaca: usar download nativo
+    if (location.protocol === 'file:') {
+      return;
     }
 
     e.preventDefault();
 
+    // Declarado fora do try para estar disponível no catch também
+    const originalText = link.textContent;
+
     try {
       // Mostrar feedback ao usuário
-      const originalText = link.textContent;
       link.textContent = '⏳ Baixando...';
-      link.disabled = true;
+      link.setAttribute('aria-disabled', 'true');
+      link.style.pointerEvents = 'none';
 
       // Fazer fetch do arquivo
       const response = await fetch(href);
@@ -78,25 +89,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Limpeza
       setTimeout(() => {
-        URL.revokeObjectURL(blobUrl);
         downloadLink.remove();
 
         // Restaurar estado do botão
         link.textContent = originalText;
-        link.disabled = false;
+        link.removeAttribute('aria-disabled');
+        link.style.pointerEvents = '';
 
         showToast('✅ Currículo baixado com sucesso!');
       }, 100);
+
+      // Revogar só depois que o download iniciou (Safari aborta se for cedo)
+      setTimeout(() => URL.revokeObjectURL(blobUrl), 1000);
 
     } catch (error) {
       console.error('Erro ao baixar arquivo:', error);
 
       // Restaurar estado do botão em caso de erro
       link.textContent = originalText;
-      link.disabled = false;
+      link.removeAttribute('aria-disabled');
+      link.style.pointerEvents = '';
 
       // Mostrar mensagem de erro
-      if (error.message.includes('Failed to fetch')) {
+      if (error instanceof TypeError) {
         showToast('⚠️ Erro de conexão. Tente novamente.');
       } else if (error.message.includes('HTTP error')) {
         showToast('⚠️ Arquivo não encontrado (404).');
@@ -128,7 +143,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // =========================
   // FECHAR MENU
   // =========================
-  function closeMenu() {
+  function closeMenu(returnFocus = true) {
 
     navLinks.classList.remove("active");
     btnMenu.classList.remove("open");
@@ -137,7 +152,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     menuOpen = false;
 
-    btnMenu.focus();
+    if (returnFocus) btnMenu.focus();
 
   }
 
@@ -164,7 +179,7 @@ document.addEventListener("DOMContentLoaded", () => {
       link.addEventListener("click", () => {
 
         if (window.innerWidth <= 768) {
-          closeMenu();
+          closeMenu(false);
         }
 
       });
@@ -182,7 +197,7 @@ document.addEventListener("DOMContentLoaded", () => {
       !navLinks.contains(e.target) &&
       !btnMenu.contains(e.target)
     ) {
-      closeMenu();
+      closeMenu(false);
     }
 
   });
@@ -243,6 +258,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const targetId =
           link.getAttribute("href");
 
+        if (!targetId || targetId === "#") return;
+
         const target =
           document.querySelector(targetId);
 
@@ -259,7 +276,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         window.scrollTo({
           top: offsetPosition,
-          behavior: "smooth"
+          behavior: prefersReducedMotion ? "auto" : "smooth"
         });
 
       });
@@ -281,6 +298,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     navLinksDesktop.forEach(link => {
       link.classList.remove("active");
+      link.removeAttribute("aria-current");
     });
 
     sections.forEach(section => {
@@ -301,6 +319,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (link) {
           link.classList.add("active");
+          link.setAttribute("aria-current", "true");
         }
 
       }
@@ -313,9 +332,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
     updateActiveLink();
 
+    let activeLinkScheduled = false;
+
     window.addEventListener(
       "scroll",
-      updateActiveLink,
+      () => {
+
+        if (activeLinkScheduled) return;
+
+        activeLinkScheduled = true;
+
+        requestAnimationFrame(() => {
+          activeLinkScheduled = false;
+          updateActiveLink();
+        });
+
+      },
       { passive: true }
     );
 
@@ -343,6 +375,21 @@ document.addEventListener("DOMContentLoaded", () => {
   );
 
   // =========================
+  // RECONCILIAR MENU AO REDIMENSIONAR
+  // =========================
+  window.addEventListener(
+    "resize",
+    () => {
+
+      if (menuOpen && window.innerWidth > 768) {
+        closeMenu(false);
+      }
+
+    },
+    { passive: true }
+  );
+
+  // =========================
   // TOAST
   // =========================
   function showToast(message) {
@@ -351,6 +398,8 @@ document.addEventListener("DOMContentLoaded", () => {
       document.createElement("div");
 
     toast.className = "toast";
+    toast.setAttribute("role", "status");
+    toast.setAttribute("aria-live", "polite");
     toast.textContent = message;
 
     document.body.appendChild(toast);

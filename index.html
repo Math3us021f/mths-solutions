@@ -10,7 +10,7 @@
     content="width=device-width, initial-scale=1">
 
   <title>
-    MTHS.Solution | Matheus Antonio
+    Matheus Antonio
   </title>
 
   <meta
@@ -23,19 +23,7 @@
 
   <meta
     name="keywords"
-    content="
-    automação de processos,
-    python,
-    engenharia de dados,
-    etl,
-    mysql,
-    api,
-    web scraping,
-    ocr,
-    dashboards,
-    looker studio,
-    power bi
-  ">
+    content="automação de processos, python, engenharia de dados, etl, mysql, api, web scraping, ocr, dashboards, looker studio, power bi">
 
   <link
     rel="canonical"
@@ -43,7 +31,8 @@
 
   <link
     rel="icon"
-    href="./assets/files/logo.png">
+    type="image/svg+xml"
+    href="./assets/img/favicon.svg">
 
   <!-- Open Graph -->
 
@@ -105,7 +94,7 @@
     crossorigin>
 
   <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap"
     rel="stylesheet">
 
   <!-- CSS -->
@@ -148,7 +137,8 @@
     <div class="container header-inner">
 
       <a href="#home" class="logo">
-        MTHS.Solutions
+        <span class="dot" aria-hidden="true"></span>
+        Matheus Antonio
       </a>
 
       <nav id="navLinks" class="nav-center">
@@ -156,9 +146,10 @@
         <ul class="nav-list">
 
           <li><a href="#home" class="nav-link">Início</a></li>
-          <li><a href="#sobre" class="nav-link">Sobre</a></li>
           <li><a href="#projetos" class="nav-link">Projetos</a></li>
+          <li><a href="#resultados" class="nav-link">Resultados</a></li>
           <li><a href="#habilidades" class="nav-link">Habilidades</a></li>
+          <li><a href="#sobre" class="nav-link">Sobre</a></li>
           <li><a href="#contato" class="nav-link">Contato</a></li>
 
         </ul>
@@ -170,8 +161,7 @@
         <a href="./assets/files/Matheus_Antonio.pdf"
           class="btn-cv"
           download="Matheus_Antonio.pdf"
-          data-download="true"
-          aria-label="Baixar currículo em PDF">
+          data-download="true">
 
           Baixar CV
 
@@ -200,40 +190,20 @@
 
     <section id="home" class="hero container">
 
-      <div class="hero-left">
+      <div class="hero-content">
+
+        <div class="hero-eyebrow">
+          <span class="dot" aria-hidden="true"></span>
+          Automação de Processos & Engenharia de Dados
+        </div>
 
         <h1>
-         Soluções em Python para Automação, Integração de Sistemas e Dados
+          Transformo processos manuais em <span class="accent-text">soluções automatizadas</span> que geram resultado
         </h1>
 
         <p class="hero-bio">
-          Desenvolvimento de soluções para automação operacional, integrações via API e engenharia de dados.
+          Ajudo empresas a eliminar tarefas repetitivas por meio de automações, integrações de APIs e pipelines de dados, transformando processos manuais em soluções mais rápidas, confiáveis e escaláveis.
         </p>
-
-        <div class="hero-stats">
-
-          <div class="stat">
-            <strong>Python</strong>
-            <div class="small muted">
-              Automação de Processos
-            </div>
-          </div>
-
-          <div class="stat">
-            <strong>APIs & ETL</strong>
-            <div class="small muted">
-              Integração e Tratamento de Dados
-            </div>
-          </div>
-
-          <div class="stat">
-            <strong>Em Evolução</strong>
-            <div class="small muted">
-              MBA em Engenharia de Dados - Faculdade Impacta
-            </div>
-          </div>
-
-        </div>
 
         <div class="hero-cta">
 
@@ -242,15 +212,14 @@
             target="_blank"
             rel="noopener noreferrer">
 
-            Solicitar Projeto
+            Fale comigo
 
           </a>
 
           <a href="./assets/files/Matheus_Antonio.pdf"
             class="btn-outline"
             download="Matheus_Antonio.pdf"
-            data-download="true"
-            aria-label="Baixar currículo em PDF">
+            data-download="true">
 
             Baixar CV
 
@@ -260,59 +229,59 @@
 
       </div>
 
-      <div class="hero-right">
-
+      <div class="hero-photo">
         <img
           src="./assets/img/perfil.jpg"
-          alt="Matheus Antonio"
-          class="perfil-img"
-          width="380"
-          height="380"
-          loading="lazy">
+          alt="Matheus Antonio, desenvolvedor Python com foco em automação de processos e engenharia de dados"
+          width="680"
+          height="680"
+          loading="eager"
+          decoding="async">
+      </div>
+
+      <div class="terminal" role="img" aria-label="Terminal exibindo o perfil de Matheus Antonio: área de atuação, stack técnica, formação e disponibilidade">
+
+        <div class="terminal-titlebar">
+          <span class="terminal-dot" aria-hidden="true"></span>
+          <span class="terminal-dot" aria-hidden="true"></span>
+          <span class="terminal-dot" aria-hidden="true"></span>
+          <span class="terminal-title">matheus@workspace:~$</span>
+        </div>
+
+        <div class="terminal-body">
+
+          <div class="terminal-line">
+            <span class="prompt-symbol">$</span><span class="cmd-text">whoami --verbose</span>
+          </div>
+
+          <div class="terminal-output">
+            <div><span class="key">Nome</span><span class="val">Matheus Antonio</span></div>
+            <div><span class="key">Atuação</span><span class="val">Desenvolvedor Python</span></div>
+            <div><span class="key">Foco</span><span class="val">Automação de Processos e Engenharia de Dados</span></div>
+            <div><span class="key">Stack</span><span class="val">Python · SQL · Docker · AWS</span></div>
+            <div><span class="key">Formação</span><span class="val">Gestão da Tecnologia da Informação — Universidade Cruzeiro do Sul</span></div>
+            <div><span class="key">Estudando</span><span class="val">MBA em Engenharia de Dados — Faculdade Impacta</span></div>
+            <div><span class="key">Status</span><span class="val">Disponível para projetos e oportunidades CLT</span></div>
+          </div>
+
+          <div class="terminal-line" style="margin-top:10px">
+            <span class="prompt-symbol">$</span><span class="cursor" aria-hidden="true"></span>
+          </div>
+
+        </div>
 
       </div>
 
     </section>
-
-    <!-- RESULTADOS -->
-
-    <section id="resultados" class="section container">
-
-      <h2 class="section-title">
-        Resultados Gerados
-      </h2>
-
-      <div class="projects-grid">
-
-        <div class="project-card">
-          <h3>Eficiência Operacional</h3>
-          <p class="muted">
-            Desenvolvimento de soluções que eliminam atividades manuais, aumentam a produtividade das equipes e permitem escalabilidade dos processos.
-          </p>
-        </div>
-
-        <div class="project-card">
-          <h3>Integração de APIs Serverless</h3>
-          <p class="muted">
-            Desenvolvimento de integrações utilizando AWS Lambda, Function URLs e API Gateway para processamento e exposição de dados sob demanda.
-          </p>
-        </div>
-
-        <div class="project-card">
-          <h3>Dados para Tomada de Decisão</h3>
-          <p class="muted">
-            Estruturação e integração de dados para alimentar dashboards, relatórios analíticos e indicadores estratégicos de negócio.
-          </p>
-        </div>
-
-      </div>
-
-    </section>
-
 
     <!-- PROJETOS -->
 
     <section id="projetos" class="section container">
+
+      <div class="log-header">
+        <span class="prompt-symbol">$</span>
+        <span class="cmd">ls -la ./projetos</span>
+      </div>
 
       <h2 class="section-title">
         Projetos em Destaque
@@ -322,138 +291,254 @@
 
         <article class="project-card">
 
-          <h3>Pipeline ETL Meta Ads</h3>
+          <div class="card-tag">automação</div>
+
+          <h3>Controle de Budget — Meta Ads & Google Ads</h3>
 
           <p class="muted">
-            Extração automatizada da Meta Marketing API com armazenamento estruturado e dashboards.
+            Sistema automatizado em Google Apps Script que busca dados de campanhas do Meta Ads e do Google Ads via API a cada 4 horas, consolidando tudo em uma planilha de acompanhamento de orçamento. Calcula automaticamente consumo, estimativa de fechamento, CTR, CPC e CPL — sem nenhuma atualização manual.
           </p>
-          
-          <div class="muted small">
-            Python • MySQL • Meta API
+
+          <div class="stack-line">
+            Google Apps Script <span class="sep">·</span> Meta Marketing API <span class="sep">·</span> Google Ads API <span class="sep">·</span> Google Sheets
           </div>
-          
-          <!-- <a
-            href="https://github.com/Math3us021f"
-            class="btn-outline-sm"
-            target="_blank"
-            rel="noopener noreferrer">
-
-            Ver Projeto
-
-          </a> -->
 
         </article>
 
         <article class="project-card">
 
+          <div class="card-tag">serverless</div>
+
           <h3>Integração Serverless AWS Lambda</h3>
 
           <p class="muted">
-            Desenvolvimento de integrações utilizando AWS Lambda, Function URLs e API Gateway para processamento e exposição de dados sob demanda.
+            Solução ETL serverless que extrai dados corporativos do MySQL, aplica regras de negócio e cálculos, gera gráficos automaticamente e disponibiliza os resultados via API para integração com sistemas internos.
           </p>
 
-          <div class="muted small">
-            Python • AWS Lambda • API Gateway
+          <div class="stack-line">
+            Python <span class="sep">·</span> AWS Lambda <span class="sep">·</span> MySQL <span class="sep">·</span> Matplotlib
           </div>
-
-          <!-- <a
-            href="https://github.com/Math3us021f"
-            class="btn-outline-sm"
-            target="_blank"
-            rel="noopener noreferrer">
-
-            Ver Projeto
-
-          </a> -->
 
         </article>
 
       </div>
 
     </section>
+    <!-- RESULTADOS -->
 
-    <!-- HABILIDADES -->
+    <section id="resultados" class="section container">
 
-    <section id="habilidades" class="section container">
+      <div class="log-header">
+        <span class="prompt-symbol">$</span>
+        <span class="cmd">cat resultados.log</span>
+      </div>
 
       <h2 class="section-title">
-        Stack Tecnológica
+        Como agrego valor ao seu negócio
       </h2>
 
-      <div class="skills-grid">
+      <div class="projects-grid">
 
-        <div class="skill-card">Python</div>
-        <div class="skill-card">Pandas</div>
-        <div class="skill-card">MySQL</div>
-        <div class="skill-card">ETL</div>
-        <div class="skill-card">APIs REST</div>
-        <div class="skill-card">Flask</div>
-        <div class="skill-card">Docker</div>
-        <div class="skill-card">Looker Studio</div>
-        <div class="skill-card">Power BI</div>
+        <article class="project-card">
+          <div class="card-tag">01 · eficiência</div>
+          <h3>Automação de Processos</h3>
+          <p class="muted">
+            Automatizo tarefas repetitivas por meio de automações e pipelines de dados, reduzindo o trabalho manual e aumentando a produtividade operacional.
+          </p>
+        </article>
+
+        <article class="project-card">
+          <div class="card-tag">02 · integração</div>
+          <h3>Integração de Sistemas</h3>
+          <p class="muted">
+            Desenvolvimento de integrações entre APIs, bancos de dados e serviços em nuvem para centralizar informações e automatizar fluxos de trabalho.
+          </p>
+        </article>
+
+        <article class="project-card">
+          <div class="card-tag">03 · decisão</div>
+          <h3>Inteligência de Dados</h3>
+          <p class="muted">
+            Organização de informações dispersas em dashboards e indicadores prontos para consulta, dando à gestão uma visão clara para decisões baseadas em evidência.
+          </p>
+        </article>
 
       </div>
 
     </section>
 
-    <!-- SOBRE -->
 
-    <section id="sobre" class="section container">
 
-      <h2 class="section-title">
-        Sobre Mim
-      </h2>
+<!-- HABILIDADES -->
 
-      <p class="muted center">
-        Profissional de Tecnologia da Informação com foco em Python, automação de processos, integração de APIs e engenharia de dados. Atualmente aprofundando conhecimentos por meio de um MBA em Engenharia de Dados, com interesse em desenvolver soluções que transformem processos operacionais e dados em valor para o negócio.
-      </p>
+<section id="habilidades" class="section container">
 
-    </section>
+  <div class="log-header">
+    <span class="prompt-symbol">$</span>
+    <span class="cmd">pip list --stack</span>
+  </div>
 
-    <!-- CONTATO -->
+  <h2 class="section-title">
+    Stack Tecnológica
+  </h2>
 
-    <section id="contato" class="section container center">
+  <div class="skills-group">
+    <div class="skills-group-label">Linguagem & Dados</div>
+    <div class="skills-grid">
 
-      <h2 class="section-title">
-        Vamos conversar?
-      </h2>
-
-      <p class="muted">
-        Disponível para projetos freelance, consultoria e oportunidades profissionais.
-      </p>
-
-      <a href="https://wa.me/5511971608644"
-        class="btn-primary"
-        target="_blank"
-        rel="noopener noreferrer">
-
-        Entrar em Contato
-
-      </a>
-
-      <div class="hero-links">
-
-        <!--
-        <a
-          href="https://github.com/Math3us021f"
-          class="social-btn"
-          target="_blank"
-          rel="noopener noreferrer">
-          GitHub
-        </a>
-
-        <a
-          href="https://linkedin.com/in/mthsa"
-          class="social-btn"
-          target="_blank"
-          rel="noopener noreferrer">
-          LinkedIn
-        </a>
-        -->
-
+      <div class="skill-card">
+        <span class="skill-icon-wrap">
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/python.svg" class="skill-icon" alt="" aria-hidden="true">
+        </span>
+        Python
       </div>
 
-    </section>
+      <div class="skill-card">
+        <span class="skill-icon-wrap">
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/pandas.svg" class="skill-icon" alt="" aria-hidden="true">
+        </span>
+        Pandas
+      </div>
+
+      <div class="skill-card">
+        <span class="skill-icon-wrap">
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/mysql.svg" class="skill-icon" alt="" aria-hidden="true">
+        </span>
+        MySQL
+      </div>
+
+    </div>
+  </div>
+
+  <div class="skills-group">
+    <div class="skills-group-label">Automação & Integração</div>
+    <div class="skills-grid">
+
+      <div class="skill-card">
+        <span class="skill-icon-wrap">
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/googlesheets.svg" class="skill-icon" alt="" aria-hidden="true">
+        </span>
+        Google Sheets
+      </div>
+
+      <div class="skill-card">
+        <span class="skill-icon-wrap">
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/googleappsscript.svg" class="skill-icon" alt="" aria-hidden="true">
+        </span>
+        Apps Script
+      </div>
+
+      <div class="skill-card">
+        <span class="skill-icon-wrap">
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/flask.svg" class="skill-icon" alt="" aria-hidden="true">
+        </span>
+        Flask
+      </div>
+
+      <div class="skill-card">
+        <span class="skill-icon-wrap">
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/docker.svg" class="skill-icon" alt="" aria-hidden="true">
+        </span>
+        Docker
+      </div>
+
+    </div>
+  </div>
+
+  <div class="skills-group">
+    <div class="skills-group-label">Analytics & BI</div>
+    <div class="skills-grid">
+
+      <div class="skill-card">
+        <span class="skill-icon-wrap">
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/looker.svg" class="skill-icon" alt="" aria-hidden="true">
+        </span>
+        Looker Studio
+      </div>
+
+      <div class="skill-card">
+        <span class="skill-icon-wrap">
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@3.13.0/icons/powerbi.svg" class="skill-icon" alt="" aria-hidden="true">
+        </span>
+        Power BI
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+  <!-- SOBRE -->
+
+  <section id="sobre" class="section container">
+
+    <div class="log-header">
+      <span class="prompt-symbol">$</span>
+      <span class="cmd">man matheus</span>
+    </div>
+
+    <h2 class="section-title">
+      Sobre Mim
+    </h2>
+
+    <p class="about-text">
+      Minha trajetória em TI começou no suporte técnico e no monitoramento de processos operacionais — diagnosticando incidentes, dando suporte a sistemas corporativos e treinando equipes. Foi nesse dia a dia que percebi o quanto tarefas manuais e repetitivas custam tempo.
+    </p>
+
+    <p class="about-text">
+      Migrei o foco para automação: hoje desenvolvo scripts e integrações em Python que resolvem esses gargalos na prática. Estou cursando um MBA em Engenharia de Dados na Faculdade Impacta, aprofundando ETL, modelagem e arquitetura de dados — conhecimento que aplico diretamente nos projetos que você viu acima.
+    </p>
+
+  </section>
+
+
+<!-- CONTATO -->
+
+<section id="contato" class="section container">
+
+  <div class="log-header">
+    <span class="prompt-symbol">$</span>
+    <span class="cmd">curl -X POST /contato</span>
+  </div>
+
+  <h2 class="section-title">
+    Vamos conversar?
+  </h2>
+
+  <p class="muted contact-lead">
+    Tem um processo manual roubando tempo da sua equipe? Vamos conversar sobre como resolver isso.
+  </p>
+
+  <a href="https://wa.me/5511971608644"
+    class="btn-primary"
+    target="_blank"
+    rel="noopener noreferrer">
+
+    Entrar em Contato
+
+  </a>
+
+  <div class="hero-links">
+
+    <a href="https://github.com/Math3us021f"
+      class="btn-outline-sm"
+      target="_blank"
+      rel="noopener noreferrer">
+      <img src="https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/github.svg" class="skill-icon" alt="" aria-hidden="true">
+      GitHub
+    </a>
+
+    <a href="https://linkedin.com/in/mthsa"
+      class="btn-outline-sm"
+      target="_blank"
+      rel="noopener noreferrer">
+      <img src="https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/linkedin.svg" class="skill-icon" alt="" aria-hidden="true">
+      LinkedIn
+    </a>
+
+  </div>
+
+</section>
 
   </main>
 
@@ -475,7 +560,28 @@
     "@type":"Person",
     "name":"Matheus Antonio",
     "url":"https://math3us021f.github.io/mths-solutions/",
-    "jobTitle":"Desenvolvedor Python e Engenheiro de Dados",
+    "jobTitle":"Analista de TI Júnior | Automação e Integração de Dados com Python",
+    "knowsAbout":[
+        "Python",
+        "Pandas",
+        "MySQL",
+        "ETL",
+        "APIs REST",
+        "Flask",
+        "Docker",
+        "Looker Studio",
+        "Power BI"
+    ],
+    "alumniOf":[
+        {
+            "@type":"CollegeOrUniversity",
+            "name":"Faculdade Impacta Tecnologia"
+        },
+        {
+            "@type":"CollegeOrUniversity",
+            "name":"Universidade Cruzeiro do Sul"
+        }
+    ],
     "sameAs":[
         "https://github.com/Math3us021f",
         "https://linkedin.com/in/mthsa"
