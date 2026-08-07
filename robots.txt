@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://math3us021f.github.io/mths-solutions/sitemap.xml
